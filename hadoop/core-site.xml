@@ -17,8 +17,16 @@
 <!-- Put site-specific property overrides in this file. -->
 
 <configuration>
+  
+    <!--这里设置namenode的本地meta信息存储位置,默认放在系统的/tmp目录下,那样的话重启的时候会丢掉格式化信息-->
     <property>
-        <name>fs.defaultFS</name>
-        <value>hdfs://localhost:9000</value>
+        <name>hadoop.tmp.dir</name>
+        <value>$HADOOP_HOME/data</value>
     </property>
+
+    <property>
+        <name>fs.default.name</name>
+        <value>hdfs://myhostname1:9000</value>
+    </property>
+
 </configuration>
