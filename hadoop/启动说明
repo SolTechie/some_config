@@ -1,0 +1,2 @@
+把这些配置文件每台机器复制一份，在主namenode机器上执行$HADOOP_HOME/bin/hadoop namenode -format格式化
+然后运行$HADOOP_HOME/sbin/start-dfs.sh自动启动集群
