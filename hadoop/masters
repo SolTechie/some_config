@@ -1,0 +1,2 @@
+#这个文件放在$HADOOP_HOME/etc/hadoop/下,如果没有自己建立,myhostname1表示想作为namenode的主机
+myhostname1
