@@ -21,7 +21,7 @@
     <!--这里设置namenode的本地meta信息存储位置,默认放在系统的/tmp目录下,那样的话重启的时候会丢掉格式化信息-->
     <property>
         <name>hadoop.tmp.dir</name>
-        <value>$HADOOP_HOME/data</value>
+        <value>/myhadoopdir/data</value>
     </property>
 
     <property>
