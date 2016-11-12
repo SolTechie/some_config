@@ -1,4 +1,7 @@
 <configuration>
+    <!--决定hmaster的关键是启动start-hbase.sh的那台主机的hostname，似乎是把主机名hostname传给regionserver的机器去通信-->
+    <!--集群中的机器保证能通过hostname访问hmaster-->
+    <!--所以这项的主机配置也许不起作用，可以用hbase.master.port来取代，只指明端口-->
     <property>
         <name>hbase.master</name>
         <value>mymasterhost:port</value>
