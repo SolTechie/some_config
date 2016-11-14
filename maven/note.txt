@@ -1,0 +1,2 @@
+mvn自动生成时加上 -DarchetypeCatalog=internal 就可以不走网络，从本地生成默认的包
+mvn archetype:generate -DarchetypeCatalog=internal
