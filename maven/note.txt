@@ -1,2 +1,63 @@
 mvn自动生成时加上 -DarchetypeCatalog=internal 就可以不走网络，从本地生成默认的包
 mvn archetype:generate -DarchetypeCatalog=internal
+
+maven-assembly-plugin和maven-shade-plugin都可以用作maven打包含依赖的jar包，使用hdfsbolt时，要使用maven-shade-plugin打包
+
+maven-shade-plugin 打包直接 mvn package 就行 pom.xml中相关插件配置如下
+e.g.
+<project>
+    ...
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>1.4</version>
+                <configuration>
+                    <createDependencyReducedPom>true</createDependencyReducedPom>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>xxx.xxx.myMainClass</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    ...
+</project>
+
+maven-assembly-plugin 打包使用 mvn assembly:assembly 即可 pom.xml中相关插件配置如下
+e.g.
+<project>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.dongqiudi.App</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
