@@ -53,7 +53,7 @@ e.g.
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>com.dongqiudi.App</mainClass>
+                            <mainClass>xxx.xxx.myMainClass</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
